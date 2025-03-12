@@ -4,7 +4,16 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Implementation of the {@link Sorting} interface using the <b>Bubble Sort</b> algorithm.
+ * <p>Implementation of the {@link Sorting} interface using the <b>Bubble Sort</b> algorithm.
+ *
+ * <p>The characteristics of the <b>Bubble Sort</b>:
+ * <ul>
+ *     <li><b>Time Complexity</b>: O(n<sup>2</sup>)</li>
+ *     <li><b>Space Complexity</b>: O(1).</li>
+ *     <li><b>Stability</b>: Stable.</li>
+ *     <li><b>In-Place or Not</b>: Yes.</li>
+ *     <li><b>Comparison-Based or Not</b>: Yes.</li>
+ * </ul>
  *
  * @author Alex Oliinyk
  */

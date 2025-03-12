@@ -6,6 +6,15 @@ import java.util.List;
 /**
  * <p>The implementation of {@link Sorting} interface using <b>Selection Sort</b> algorithm.
  *
+ * <p>The characteristics of the <b>Selection Sort</b>:
+ * <ul>
+ *     <li><b>Time Complexity</b>: O(n<sup>2</sup>)</li>
+ *     <li><b>Space Complexity</b>: O(1).</li>
+ *     <li><b>Stability</b>: Not Stable.</li>
+ *     <li><b>In-Place or Not</b>: Yes.</li>
+ *     <li><b>Comparison-Based or Not</b>: Yes.</li>
+ * </ul>
+ *
  * @author Alex Oliinyk
  */
 public final class SelectionSort implements Sorting {

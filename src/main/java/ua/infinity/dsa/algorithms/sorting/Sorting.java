@@ -5,7 +5,18 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Interface for sorting arrays and lists of {@link Comparable} elements.
+ * <p>Interface for sorting arrays and lists of {@link Comparable} elements.
+ *
+ * <p>The next characteristics could be used to describe Sorting Algorithms:
+ * <ul>
+ *     <li><b>Time Complexity</b>: Measures the number of operations needed to sort the data in the best, worst, and
+ *     average cases.</li>
+ *     <li><b>Space Complexity</b>: Indicates how much extra memory (besides input data) is used.</li>
+ *     <li><b>Stability</b>: Ensures that equal elements keep their original relative order after sorting.</li>
+ *     <li><b>In-Place or Not</b>: A sorting algorithm is in-place if it sorts using a constant or small amount of extra
+ *     space.</li>
+ *     <li><b>Comparison-Based or Not</b>: Uses element comparisons to determine order.</li>
+ * </ul>
  *
  * @see BubbleSort
  * @see SelectionSort
