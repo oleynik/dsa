@@ -4,8 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Implementation of the {@link Sorting} interface using the Bubble Sort algorithm.
- * Bubble Sort is generally inefficient for large datasets due to its O(n<sup>2</sup>) time complexity.
+ * Implementation of the {@link Sorting} interface using the <b>Bubble Sort</b> algorithm.
  *
  * @author Alex Oliinyk
  */

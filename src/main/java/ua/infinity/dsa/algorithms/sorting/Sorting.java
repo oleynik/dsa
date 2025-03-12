@@ -7,6 +7,9 @@ import java.util.List;
 /**
  * Interface for sorting arrays and lists of {@link Comparable} elements.
  *
+ * @see BubbleSort
+ * @see SelectionSort
+ *
  * @author Alex Oliinyk
  */
 public interface Sorting {
