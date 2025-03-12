@@ -27,7 +27,7 @@ This project is designed to help you understand and implement data structures an
 [Sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm)
 - Sorting Algorithms
     - [Bubble Sort](src/main/java/ua/infinity/dsa/algorithms/sorting/BubbleSort.java)
-    - Selection Sort
+    - [Selection Sort](src/main/java/ua/infinity/dsa/algorithms/sorting/SelectionSort.java)
     - Insertion Sort
     - Merge Sort
     - Quick Sort

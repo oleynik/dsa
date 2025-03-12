@@ -4,6 +4,7 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import ua.infinity.dsa.algorithms.sorting.BubbleSort;
+import ua.infinity.dsa.algorithms.sorting.SelectionSort;
 
 import java.util.stream.Stream;
 
@@ -15,7 +16,8 @@ public class SortingAlgorithmProvider implements ArgumentsProvider {
     @Override
     public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
         return Stream.of(
-                Arguments.of(new BubbleSort())
+                Arguments.of(new BubbleSort()),
+                Arguments.of(new SelectionSort())
         );
     }
 }
