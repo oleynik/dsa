@@ -50,7 +50,8 @@ class StabilityTest {
     private static Stream<Sorting> algorithms() {
         return Stream.of(
                 new BubbleSort(),
-                new InsertionSort()
+                new InsertionSort(),
+                new MergeSort()
         );
     }
 
