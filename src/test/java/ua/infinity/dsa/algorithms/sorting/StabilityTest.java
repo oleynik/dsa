@@ -47,11 +47,15 @@ class StabilityTest {
             }
         }
 
-    private static Stream<Arguments> straightData() {
-        Stream<Sorting> algorithms = Stream.of(
-                new BubbleSort()
+    private static Stream<Sorting> algorithms() {
+        return Stream.of(
+                new BubbleSort(),
+                new InsertionSort()
         );
-        return algorithms.flatMap(algorithm -> Stream.of(
+    }
+
+    private static Stream<Arguments> straightData() {
+        return algorithms().flatMap(algorithm -> Stream.of(
                 Arguments.of(algorithm,
                         new IndexedValue[] {IndexedValue.of(1, 1), IndexedValue.of(2, 1)},
                         new IndexedValue[] {IndexedValue.of(1, 1), IndexedValue.of(2, 1)}),
@@ -99,10 +103,7 @@ class StabilityTest {
     }
 
     private static Stream<Arguments> reversedData() {
-        Stream<Sorting> algorithms = Stream.of(
-                new BubbleSort()
-        );
-        return algorithms.flatMap(algorithm -> Stream.of(
+        return algorithms().flatMap(algorithm -> Stream.of(
                 Arguments.of(algorithm,
                         new IndexedValue[] {IndexedValue.of(1, 1), IndexedValue.of(2, 1)},
                         new IndexedValue[] {IndexedValue.of(1, 1), IndexedValue.of(2, 1)}),
