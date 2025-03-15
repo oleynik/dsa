@@ -122,15 +122,10 @@ public class ArrayBasedHeap<T extends Comparable<T>> implements Heap<T> {
             return false;
         }
 
-        if (!Objects.equals(this.size, heap.size)) {
+        if (this.size != heap.size) {
             return false;
         }
-        for (int i=0;i<this.size-1;i++) {
-            if (!this.values[i].equals(heap.values[i])) {
-                return false;
-            }
-        }
-        return true;
+        return Arrays.equals(this.values, heap.values);
     }
 
     @Override

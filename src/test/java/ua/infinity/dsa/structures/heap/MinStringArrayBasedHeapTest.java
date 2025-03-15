@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Alex Oliinyk
@@ -32,12 +33,15 @@ class MinStringArrayBasedHeapTest {
     }
 
     private static Stream<Arguments> testEquals() {
+        Heap<String> h = ArrayBasedHeap.maxHeap();
+        h.push("One");
         return Stream.of(
                 Arguments.of(null, false),
                 Arguments.of(ArrayBasedHeap.minHeap(), true),
                 Arguments.of(ArrayBasedHeap.maxHeap(), true),
                 Arguments.of(new ArrayBasedHeap<String>(2, Comparator.naturalOrder()), true),
                 Arguments.of(new ArrayBasedHeap<String>(3, Comparator.reverseOrder()), true),
+                Arguments.of(h, false),
                 Arguments.of(new Object(), false),
                 Arguments.of("Hello, World!", false)
         );
@@ -120,6 +124,13 @@ class MinStringArrayBasedHeapTest {
     @ParameterizedTest
     void testEquals(Object that, boolean expected) {
         assertEquals(expected, heap.equals(that));
+    }
+
+    @MethodSource("data")
+    @ParameterizedTest
+    void testHashCode(List<String> list) {
+        list.forEach(heap::push);
+        assertTrue(heap.hashCode() != 0);
     }
 
     @MethodSource("data")

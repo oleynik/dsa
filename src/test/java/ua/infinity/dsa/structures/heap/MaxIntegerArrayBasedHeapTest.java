@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Alex Oliinyk
@@ -27,17 +28,21 @@ public class MaxIntegerArrayBasedHeapTest {
                 Arguments.of(List.of(1), List.of(1)),
                 Arguments.of(List.of(1, 2), List.of(2, 1)),
                 Arguments.of(List.of(2, 1), List.of(2, 1)),
-                Arguments.of(List.of(2, 1, 3), List.of(3, 2, 1))
+                Arguments.of(List.of(2, 1, 3), List.of(3, 2, 1)),
+                Arguments.of(List.of(2, 1, 3, 13, 15, 4, 9, 11, 7, 8, 10, 5, 12, 6, 14), List.of(15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1))
         );
     }
 
     private static Stream<Arguments> testEquals() {
+        Heap<Integer> h = ArrayBasedHeap.maxHeap();
+        h.push(1);
         return Stream.of(
                 Arguments.of(null, false),
                 Arguments.of(ArrayBasedHeap.maxHeap(), true),
                 Arguments.of(ArrayBasedHeap.minHeap(), true),
                 Arguments.of(new ArrayBasedHeap<String>(2, Comparator.naturalOrder()), true),
                 Arguments.of(new ArrayBasedHeap<String>(3, Comparator.reverseOrder()), true),
+                Arguments.of(h, false),
                 Arguments.of("Hello, World!", false),
                 Arguments.of(new Object(), false)
         );
@@ -121,6 +126,13 @@ public class MaxIntegerArrayBasedHeapTest {
     @ParameterizedTest
     void testEquals(Object that, boolean expected) {
         assertEquals(expected, heap.equals(that));
+    }
+
+    @MethodSource("data")
+    @ParameterizedTest
+    void testHashCode(List<Integer> list) {
+        list.forEach(heap::push);
+        assertTrue(heap.hashCode() != 0);
     }
 
     @MethodSource("data")
