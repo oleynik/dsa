@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.ArgumentsProvider;
 import ua.infinity.dsa.algorithms.sorting.BubbleSort;
 import ua.infinity.dsa.algorithms.sorting.InsertionSort;
 import ua.infinity.dsa.algorithms.sorting.MergeSort;
+import ua.infinity.dsa.algorithms.sorting.QuickSort;
 import ua.infinity.dsa.algorithms.sorting.SelectionSort;
 
 import java.util.stream.Stream;
@@ -21,7 +22,8 @@ public class SortingAlgorithmProvider implements ArgumentsProvider {
                 Arguments.of(new BubbleSort()),
                 Arguments.of(new SelectionSort()),
                 Arguments.of(new InsertionSort()),
-                Arguments.of(new MergeSort())
+                Arguments.of(new MergeSort()),
+                Arguments.of(new QuickSort())
         );
     }
 }
