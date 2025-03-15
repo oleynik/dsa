@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  */
 public class ArrayBasedHeap<T extends Comparable<T>> implements Heap<T> {
 
-    private static final int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 15;
 
     @SuppressWarnings("rawtypes")
     private static final Comparator DEFAULT_COMPARATOR = Comparator.naturalOrder();
@@ -41,7 +41,7 @@ public class ArrayBasedHeap<T extends Comparable<T>> implements Heap<T> {
 
     private void heapifyUp(int index) {
         while (index > 0) {
-            int top = index / 2;
+            int top = (index-1) / 2;
             T parent = this.values[top];
             T current = this.values[index];
             if (this.comparator.compare(parent, current) <= 0) {
@@ -75,22 +75,29 @@ public class ArrayBasedHeap<T extends Comparable<T>> implements Heap<T> {
             }
             T current = this.values[index];
             T left = this.values[l];
-            if (comparator.compare(left, current) < 0) {
-                this.values[index] = left;
-                this.values[l] = current;
-                index = l;
-                continue;
-            }
             int r = l + 1;
             if (r >= size) {
+                if (comparator.compare(left, current) < 0) {
+                    this.values[index] = left;
+                    this.values[l] = current;
+                }
                 return;
             }
             T right = this.values[r];
-            if (comparator.compare(right, current) < 0) {
-                this.values[r] = current;
-                this.values[index] = right;
-                index = r;
-                continue;
+            if (comparator.compare(left, right) < 0) {
+                if (comparator.compare(left, current) < 0) {
+                    this.values[index] = left;
+                    this.values[l] = current;
+                    index = l;
+                    continue;
+                }
+            } else {
+                if (comparator.compare(right, current) < 0) {
+                    this.values[r] = current;
+                    this.values[index] = right;
+                    index = r;
+                    continue;
+                }
             }
             return;
         }
@@ -122,7 +129,7 @@ public class ArrayBasedHeap<T extends Comparable<T>> implements Heap<T> {
             return false;
         }
 
-        if (!Objects.equals(this.size, heap.size)) {
+        if (this.size != heap.size) {
             return false;
         }
         for (int i=0;i<this.size-1;i++) {
