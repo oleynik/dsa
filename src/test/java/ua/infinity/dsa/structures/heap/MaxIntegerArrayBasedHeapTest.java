@@ -11,8 +11,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Alex Oliinyk
@@ -27,17 +29,22 @@ public class MaxIntegerArrayBasedHeapTest {
                 Arguments.of(List.of(1), List.of(1)),
                 Arguments.of(List.of(1, 2), List.of(2, 1)),
                 Arguments.of(List.of(2, 1), List.of(2, 1)),
-                Arguments.of(List.of(2, 1, 3), List.of(3, 2, 1))
+                Arguments.of(List.of(2, 1, 3), List.of(3, 1, 2)),
+                Arguments.of(List.of(4, 3, 2, 1), List.of(4, 3, 2, 1)),
+                Arguments.of(List.of(14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0), List.of(14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0))
         );
     }
 
     private static Stream<Arguments> testEquals() {
+        Heap<Integer> h = ArrayBasedHeap.maxHeap();
+        h.push(1);
         return Stream.of(
                 Arguments.of(null, false),
                 Arguments.of(ArrayBasedHeap.maxHeap(), true),
                 Arguments.of(ArrayBasedHeap.minHeap(), true),
                 Arguments.of(new ArrayBasedHeap<String>(2, Comparator.naturalOrder()), true),
                 Arguments.of(new ArrayBasedHeap<String>(3, Comparator.reverseOrder()), true),
+                Arguments.of(h, false),
                 Arguments.of("Hello, World!", false),
                 Arguments.of(new Object(), false)
         );
@@ -89,7 +96,8 @@ public class MaxIntegerArrayBasedHeapTest {
         assertEquals(0, heap.size());
 
         list.forEach(heap::push);
-        for (Integer exp : expected) {
+        List<Integer> list1 = expected.stream().sorted(Comparator.reverseOrder()).toList();
+        for (Integer exp : list1) {
             assertEquals(exp, heap.pop());
         }
         assertEquals(0, heap.size());
@@ -121,6 +129,27 @@ public class MaxIntegerArrayBasedHeapTest {
     @ParameterizedTest
     void testEquals(Object that, boolean expected) {
         assertEquals(expected, heap.equals(that));
+    }
+
+    @Test
+    void testNotEquals() {
+        Heap<Integer> h = ArrayBasedHeap.maxHeap();
+        h.push(1);
+        h.push(2);
+        h.push(3);
+        System.out.println(h);
+        heap.push(3);
+        heap.push(2);
+        heap.push(1);
+        System.out.println(heap);
+        assertNotEquals(heap, h);
+    }
+
+    @MethodSource("data")
+    @ParameterizedTest
+    void testHashCode(List<Integer> list) {
+        list.forEach(heap::push);
+        assertTrue(heap.hashCode() != 0);
     }
 
     @MethodSource("data")
