@@ -30,7 +30,7 @@ This project is designed to help you understand and implement data structures an
     - [Selection Sort](src/main/java/ua/infinity/dsa/algorithms/sorting/SelectionSort.java)
     - [Insertion Sort](src/main/java/ua/infinity/dsa/algorithms/sorting/InsertionSort.java)
     - [Merge Sort](src/main/java/ua/infinity/dsa/algorithms/sorting/MergeSort.java)
-    - Quick Sort
+    - [Quick Sort](src/main/java/ua/infinity/dsa/algorithms/sorting/QuickSort.java)
 - Searching Algorithms
     - Linear Search
     - Binary Search
