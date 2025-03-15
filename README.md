@@ -24,8 +24,7 @@ This project is designed to help you understand and implement data structures an
   - HashTable
 
 ## Algorithms
-[Sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm)
-- Sorting Algorithms
+- [Sorting Algorithms](https://en.wikipedia.org/wiki/Sorting_algorithm)
     - [Bubble Sort](src/main/java/ua/infinity/dsa/algorithms/sorting/BubbleSort.java)
     - [Selection Sort](src/main/java/ua/infinity/dsa/algorithms/sorting/SelectionSort.java)
     - [Insertion Sort](src/main/java/ua/infinity/dsa/algorithms/sorting/InsertionSort.java)
