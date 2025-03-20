@@ -8,6 +8,7 @@ import ua.infinity.dsa.algorithms.sorting.InsertionSort;
 import ua.infinity.dsa.algorithms.sorting.MergeSort;
 import ua.infinity.dsa.algorithms.sorting.QuickSort;
 import ua.infinity.dsa.algorithms.sorting.SelectionSort;
+import ua.infinity.dsa.algorithms.sorting.ShellSort;
 
 import java.util.stream.Stream;
 
@@ -23,7 +24,8 @@ public class SortingAlgorithmProvider implements ArgumentsProvider {
                 Arguments.of(new SelectionSort()),
                 Arguments.of(new InsertionSort()),
                 Arguments.of(new MergeSort()),
-                Arguments.of(new QuickSort())
+                Arguments.of(new QuickSort()),
+                Arguments.of(new ShellSort())
         );
     }
 }
